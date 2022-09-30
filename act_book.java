@@ -1,4 +1,4 @@
-package form;
+package lesson;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
@@ -28,10 +28,13 @@ class act_book extends JFrame{
 		JButton btn0 = new JButton("새항목");
 		JLabel la1 = new JLabel("일자");
 		JTextField txtfield = new JTextField(20);
+		JLabel la2 = new JLabel("항목");
 		
 		btn0.setBounds(600,380,75,75);
 		scrollpane.setBounds(10,10,670,200);
-		la1.setBounds(EXIT_ON_CLOSE, ABORT, WIDTH, HEIGHT);
+		la1.setBounds(50,240,50,50);
+		txtfield.setBounds(80,255,100,20);
+		la2.setBounds(EXIT_ON_CLOSE, ABORT, WIDTH, HEIGHT);
 		
 		setTitle("account_book");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -41,6 +44,8 @@ class act_book extends JFrame{
 		setLayout(null);
 		getContentPane().add(btn0);
 		getContentPane().add(scrollpane);
+		getContentPane().add(la1);
+		getContentPane().add(txtfield);
 	}
 	public static void main(String[] args) {
 		new act_book();
