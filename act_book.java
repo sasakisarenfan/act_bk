@@ -1,12 +1,15 @@
 package form;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.reflect.Field;
 import java.security.PublicKey;
 import java.util.Iterator;
 
@@ -22,9 +25,12 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-
 class act_book extends JFrame{
+	
 	act_book() {
+		
+		Font f1;
+		
 		String a[] = {"일 자","항 목","수 입","지 출","잔 액"};
 		String b[][] = {};
 		
@@ -45,7 +51,11 @@ class act_book extends JFrame{
 		JButton new_btn = new JButton("새항목");
 		JButton save_btn = new JButton("저장");
 		
-		JTextArea txtarea = new JTextArea(5,20);
+		JTextField balance_field = new JTextField(20);
+		
+		this.setBackground(Color.WHITE);
+		
+		f1 = new Font("굴림",Font.PLAIN,30);
 		
 		scrollpane.setBounds(10,10,670,200);
 
@@ -62,7 +72,11 @@ class act_book extends JFrame{
 		new_btn.setBounds(600,380,75,75);
 		save_btn.setBounds(600,300,75,75);
 		
-		txtarea.setBounds(20,370,565,75);
+		balance_field.setBounds(20,370,565,75);
+		
+		balance_field.setHorizontalAlignment(JTextField.CENTER);
+		
+		balance_field.setFont(f1);
 		
 		setTitle("account_book");
 		
@@ -80,7 +94,7 @@ class act_book extends JFrame{
 		
 		setLayout(null);
 		
-		scrollpane.setEnabled(false);
+		table.setEnabled(false);
 		
 		getContentPane().add(scrollpane);
 
@@ -97,18 +111,21 @@ class act_book extends JFrame{
 		getContentPane().add(new_btn);
 		getContentPane().add(save_btn);
 		
-		getContentPane().add(txtarea);
+		getContentPane().add(balance_field);
 		
 		new_btn.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				
 				String str_count[] = new String[5];
+				
 				str_count[0] = date_field.getText();
 				str_count[1] = category_field.getText();
 				str_count[2] = income_field.getText();
 				str_count[3] = spending_field.getText();
+				str_count[4] = balance_field.getText();
 				
 				model.addRow(str_count);
 				
@@ -116,16 +133,9 @@ class act_book extends JFrame{
 				category_field.setText("");
 				income_field.setText("");
 				spending_field.setText("");
+				balance_field.setText("");
 			}
-		});
-		
-		save_btn.addActionListener(new ActionListener() {
 			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
 		});
 		
 	}
@@ -134,4 +144,4 @@ class act_book extends JFrame{
 		new act_book();
 	}
 
-}s
+}
